@@ -170,6 +170,86 @@ const Hero = () => {
   );
 };
 
+const About = () => {
+  return (
+    <section id="about" className="py-24 px-6 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+        {/* Graphical Animation / Profile Frame */}
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          className="relative w-full md:w-1/2 flex justify-center"
+        >
+          <div className="relative w-64 h-64 md:w-80 md:h-80">
+            {/* Holographic Rings */}
+            <motion.div 
+              animate={{ rotate: 360 }}
+              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-0 border-2 border-dashed border-neon-cyan/30 rounded-full"
+            />
+            <motion.div 
+              animate={{ rotate: -360 }}
+              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+              className="absolute -inset-4 border border-neon-purple/20 rounded-full"
+            />
+            
+            {/* Profile Image Placeholder / Graphic */}
+            <div className="absolute inset-4 glass rounded-2xl flex items-center justify-center overflow-hidden border-neon-cyan/50">
+               <div className="absolute inset-0 bg-gradient-to-t from-neon-cyan/20 to-transparent" />
+               <Cpu className="w-32 h-32 text-neon-cyan opacity-50 animate-pulse" />
+               <div className="scanline" />
+            </div>
+
+            {/* Floating Data Points */}
+            <motion.div 
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 3, repeat: Infinity }}
+              className="absolute -top-4 -right-4 glass p-2 text-[10px] font-mono text-neon-cyan border-neon-cyan/50"
+            >
+              STATUS: ACTIVE
+            </motion.div>
+            <motion.div 
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="absolute -bottom-4 -left-4 glass p-2 text-[10px] font-mono text-neon-purple border-neon-purple/50"
+            >
+              LOC: DIGITAL_FRONTIER
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Text Content */}
+        <motion.div 
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          className="w-full md:w-1/2"
+        >
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8">IDENTITY_CORE</h2>
+          <div className="space-y-6 text-gray-400 text-lg leading-relaxed font-light">
+            <p className="border-l-2 border-neon-cyan pl-6">
+              <span className="text-neon-cyan font-bold">System initialized.</span> I am Prayas Chakma, a MERN Stack Architect fueled by three years of deep-code exploration and real-world project deployment.
+            </p>
+            <p>
+              Since graduating from EUB in 2022, I’ve dedicated my career to mastering the digital frontier. I don't just build websites; I engineer scalable ecosystems using MongoDB, Express, React, and Node.js—merging sci-fi aesthetics with rock-solid engineering.
+            </p>
+          </div>
+          
+          <div className="mt-10 grid grid-cols-2 gap-4">
+            <div className="glass p-4 border-t border-neon-cyan/30">
+              <div className="text-neon-cyan text-2xl font-bold">3+</div>
+              <div className="text-[10px] uppercase tracking-widest text-gray-500">Years Exploration</div>
+            </div>
+            <div className="glass p-4 border-t border-neon-purple/30">
+              <div className="text-neon-purple text-2xl font-bold">EUB '22</div>
+              <div className="text-[10px] uppercase tracking-widest text-gray-500">Graduation Cycle</div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 const Skills = () => {
   const skills = [
     { name: 'MongoDB', icon: <Database className="w-8 h-8" />, color: 'from-green-500/20 to-green-500/5', borderColor: 'border-green-500/30' },
@@ -465,6 +545,7 @@ export default function App() {
     <div className="relative">
       <Navbar />
       <Hero />
+      <About />
       <Skills />
       <Projects />
       <Testimonials />
